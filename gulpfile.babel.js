@@ -35,7 +35,7 @@ const onError = function(error) {
 // HTML
 
 gulp.task('html', () => {
-  return gulp.src('src/html/**/*.html')
+  return gulp.src('client/html/**/*.html')
     .pipe(plumber({ errorHandler: onError }))
     .pipe(fileinclude({ prefix: '@', basepath: 'dist/' }))
     .pipe(htmlmin({ collapseWhitespace: true, removeComments: true }))
@@ -45,7 +45,7 @@ gulp.task('html', () => {
 // SASS
 
 gulp.task('sass', () => {
-  return gulp.src('src/sass/style.scss')
+  return gulp.src('client/sass/style.scss')
     .pipe(plumber({ errorHandler: onError }))
     .pipe(sourcemaps.init())
     .pipe(sass())
@@ -58,7 +58,7 @@ gulp.task('sass', () => {
 // JS
 
 const browserifyArgs = {
-  entries: 'src/js/main.js',
+  entries: 'client/js/main.js',
   debug: true,
   transform: [ 'babelify' ]
 }
@@ -89,7 +89,7 @@ gulp.task('js', build)
 // IMAGES
 
 gulp.task('images', () => {
-  return gulp.src('src/images/**/*.{gif,jpg,png,svg}')
+  return gulp.src('client/images/**/*.{gif,jpg,png,svg}')
     .pipe(plumber({ errorHandler: onError }))
     .pipe(changed('dist'))
     .pipe(imagemin({ progressive: true, interlaced: true }))
@@ -112,7 +112,7 @@ const outputs = [
 
 ;['videos', 'fonts', 'favicon'].forEach((name, index) => {
   gulp.task(name, () => {
-    return gulp.src('src' + inputs[index])
+    return gulp.src('client' + inputs[index])
       .pipe(plumber({ errorHandler: onError }))
       .pipe(gulp.dest('dist' + outputs[index]))
   })
@@ -152,9 +152,9 @@ gulp.task('server', () => sync(options))
 // WATCH
 
 gulp.task('watch', () => {
-  gulp.watch('src/html/**/*.html', ['html', reload])
-  gulp.watch('src/sass/**/*.scss', ['sass', reload])
-  gulp.watch('src/images/**/*.{gif,jpg,png,svg}', ['images', reload])
+  gulp.watch('client/html/**/*.html', ['html', reload])
+  gulp.watch('client/sass/**/*.scss', ['sass', reload])
+  gulp.watch('client/images/**/*.{gif,jpg,png,svg}', ['images', reload])
 })
 
 // BUILD & DEFAULT TASK
