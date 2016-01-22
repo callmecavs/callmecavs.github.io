@@ -19,11 +19,19 @@ app.get('/', (req, res) => {
   // make github request
   request(options, (error, response, repos) => {
     if(!error && response.statusCode === 200) {
-      // sort repos by stars
-      const sorted = JSON.parse(repos).sort((a, b) => b.stargazers_count - a.stargazers_count)
+      // clean repos, sort by stars
+      const parsed = JSON.parse(repos)
+        .map(x => ({
+          name: x.name,
+          desc: x.description,
+          url: x.html_url,
+          stars: x.stargazers_count,
+          forks: x.forks_count
+        }))
+        .sort((a, b) => b.stars - a.stars)
 
       // write to textfile
-      fs.writeFile('repos.txt', JSON.stringify(sorted), (error) => {
+      fs.writeFile('repos.txt', JSON.stringify(parsed), (error) => {
         if(error) throw err
       })
     }
