@@ -5,6 +5,10 @@
   "author": "",
   "license": "",
 
+  "dependencies": {
+    "express": "^4.13.3"
+  },
+
   "devDependencies": {
     "babel-core":          "*",
     "babel-preset-es2015": "*",
