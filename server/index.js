@@ -1,3 +1,5 @@
+const fs = require('fs')
+
 const express = require('express')
 const request = require('request')
 
@@ -15,10 +17,15 @@ app.get('/', (req, res) => {
   }
 
   // make github request
-  request(options, function(error, response, repos) {
+  request(options, (error, response, repos) => {
     if(!error && response.statusCode === 200) {
       // sort repos by stars
       const sorted = JSON.parse(repos).sort((a, b) => b.stargazers_count - a.stargazers_count)
+
+      // write to textfile
+      fs.writeFile('repos.txt', JSON.stringify(sorted), (error) => {
+        if(error) throw err
+      })
     }
   })
 })
