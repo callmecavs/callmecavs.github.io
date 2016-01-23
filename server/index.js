@@ -37,11 +37,8 @@ const cron = schedule.scheduleJob('*/5 * * * *', () => {
   })
 })
 
-// init route
-app.get('/', (req, res) => {
-  // send cached repos JSON
-  res.json(repos)
-})
+// init route, send cached repos JSON
+app.get('/', (req, res) => res.json(repos))
 
 // start up server
 app.listen(8000)
