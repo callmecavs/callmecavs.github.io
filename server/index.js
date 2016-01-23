@@ -1,26 +1,30 @@
-const fs = require('fs')
+'use strict'
 
 const express = require('express')
 const request = require('request')
+const schedule = require('node-schedule')
 
 // init app
 const app = express()
 
-// init route
-app.get('/', (req, res) => {
-  // request options
-  const options = {
-    url: 'https://api.github.com/users/callmecavs/repos',
-    headers: {
-      'User-Agent': 'callmecavs'
-    }
-  }
+// cache for repos JSON
+let repos
 
+// cache github request details
+const options = {
+  url: 'https://api.github.com/users/callmecavs/repos',
+  headers: {
+    'User-Agent': 'callmecavs'
+  }
+}
+
+// init cron job
+const cron = schedule.scheduleJob('*/5 * * * *', () => {
   // make github request
-  request(options, (error, response, repos) => {
+  request(options, (error, response, body) => {
     if(!error && response.statusCode === 200) {
       // clean repos, sort by stars
-      const parsed = JSON.parse(repos)
+      repos = JSON.parse(body)
         .map(x => ({
           name: x.name,
           desc: x.description,
@@ -29,13 +33,13 @@ app.get('/', (req, res) => {
           forks: x.forks_count
         }))
         .sort((a, b) => b.stars - a.stars)
-
-      // write to textfile
-      fs.writeFile('./repos.txt', JSON.stringify(parsed), (error) => {
-        if(error) throw err
-      })
     }
   })
+})
+
+// init route
+app.get('/', (req, res) => {
+
 })
 
 // start up server
