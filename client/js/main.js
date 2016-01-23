@@ -1,7 +1,7 @@
-class Main {
-  constructor(options = {}) {
+import repos from './repos'
 
-  }
+const main = () => {
+  repos()
 }
 
-document.addEventListener('DOMContentLoaded', event => new Main)
+document.addEventListener('DOMContentLoaded', event => main())
