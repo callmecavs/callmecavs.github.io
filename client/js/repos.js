@@ -22,6 +22,6 @@ export default () => {
       frag.appendChild(wrap)
     })
 
-    document.querySelector('.wrapper').appendChild(frag)
+    document.querySelector('.repos').appendChild(frag)
   })
 }
