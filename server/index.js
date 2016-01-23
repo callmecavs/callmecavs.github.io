@@ -7,6 +7,13 @@ const schedule = require('node-schedule')
 // init app
 const app = express()
 
+// middleware for CORS
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000')
+  res.setHeader('Access-Control-Allow-Methods', 'GET')
+  next()
+})
+
 // cache for repos JSON
 let repos
 
