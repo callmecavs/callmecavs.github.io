@@ -18,7 +18,7 @@ const options = {
   }
 }
 
-// init cron job
+// init cron job to run every 5 minutes
 const cron = schedule.scheduleJob('*/5 * * * *', () => {
   // make github request
   request(options, (error, response, body) => {
@@ -39,7 +39,8 @@ const cron = schedule.scheduleJob('*/5 * * * *', () => {
 
 // init route
 app.get('/', (req, res) => {
-
+  // send cached repos JSON
+  res.json(repos)
 })
 
 // start up server
