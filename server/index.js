@@ -31,7 +31,7 @@ app.get('/', (req, res) => {
         .sort((a, b) => b.stars - a.stars)
 
       // write to textfile
-      fs.writeFile('repos.txt', JSON.stringify(parsed), (error) => {
+      fs.writeFile('./repos.txt', JSON.stringify(parsed), (error) => {
         if(error) throw err
       })
     }
