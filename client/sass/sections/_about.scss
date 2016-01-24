@@ -1,0 +1,23 @@
+.about {
+  transition: height .5s ease;
+
+  position: relative;
+}
+
+.about-piece {
+  opacity: 0;
+  visibility: hidden;
+
+  transition: opacity .5s ease, visibility 0s ease .5s;
+}
+
+  .about-piece.is-active {
+    opacity: 1;
+    visibility: visible;
+
+    transition-delay: 0s;
+  }
+
+.about-text {
+  line-height: 1.5;
+}

@@ -1,4 +1,5 @@
-import repos from './repos'
+import about from './sections/about'
+import repos from './sections/repos'
 
 const main = () => {
   repos()
