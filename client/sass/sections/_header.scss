@@ -1,6 +1,13 @@
 .header {
+  position: relative;
 
+  height: calc(100vh - 85px);
+  padding-top: 12.5vh;
 }
+
+  .is-ios .header {
+    height: calc(100vh - 155px);
+  }
 
 .header-logo {
   width: 76px;
@@ -13,12 +20,24 @@
   @include hide-text;
 }
 
+.header-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
 .header-heading,
 .header-subheading {
-  margin-bottom: 25px;
-
   font-size: 2.4rem;
   line-height: 1.35;
+}
+
+.header-heading {
+  margin-bottom: 30px;
+}
+
+.header-subheading {
+  margin-bottom: 25px;
 }
 
 .header-cta {
