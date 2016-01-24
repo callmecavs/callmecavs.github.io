@@ -1,7 +1,9 @@
 import { toArray } from '../util'
 
 export default () => {
-  const pieces = toArray('[data-about]')
+  const section = document.querySelector('[data-about]')
+  const content = toArray('[data-about-piece]')
 
-  console.log(pieces)
+  // set height attribute of each piece
+  content.forEach(piece => piece.setAttribute('data-height', piece.clientHeight))
 }
