@@ -1,0 +1,31 @@
+.footer {
+  padding-top: 40px;
+  padding-bottom: 40px;
+
+  background-color: $black;
+}
+
+.footer-logo {
+  width: 50px;
+  margin-bottom: 30px;
+}
+
+.footer-heading {
+  margin-bottom: 35px;
+  padding-bottom: 20px;
+
+  background-image: url("images/footer/heading.svg");
+  background-position: left bottom;
+  background-repeat: no-repeat;
+}
+
+.footer-cta {
+  display: inline-flex;
+  align-items: center;
+
+  color: $copper;
+}
+
+  .footer-cta-icon {
+    margin-left: 10px;
+  }
