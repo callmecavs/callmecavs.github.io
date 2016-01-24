@@ -1,0 +1,36 @@
+.repos {
+
+}
+
+.repo {
+  margin-bottom: 30px;
+}
+
+.repo-stars {
+  display: none;
+}
+
+.repo-forks {
+  display: none;
+}
+
+.repo-name {
+  margin-bottom: 10px;
+
+  font-size: 1.8rem;
+}
+
+.repo-desc {
+  margin-bottom: 20px;
+}
+
+.repo-url {
+  display: inline-flex;
+  align-items: center;
+
+  color: $copper;
+}
+
+  .repo-url-icon {
+    margin-left: 10px;
+  }

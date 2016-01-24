@@ -6,7 +6,7 @@ const children = info => `
   <p class="repo-forks">${ info.forks }</p>
   <p class="repo-name">${ info.name }</p>
   <p class="repo-desc">${ info.desc }</p>
-  <a class="repo-url" href="${ info.url }" target="_blank"></a>
+  <a class="repo-url" href="${ info.url }" target="_blank">Launch<img class="repo-url-icon" src="images/repos/url.svg"></a>
 `
 
 export default () => {
