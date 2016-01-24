@@ -9,6 +9,10 @@
   visibility: hidden;
 
   transition: opacity .5s ease, visibility 0s ease .5s;
+
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
   .about-piece.is-active {
