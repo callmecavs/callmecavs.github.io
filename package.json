@@ -5,6 +5,10 @@
   "author": "",
   "license": "",
 
+  "scripts": {
+    "push": "git subtree push --prefix dist origin master"
+  },
+
   "dependencies": {
     "express": "^4.13.3",
     "jax.js": "^0.0.1",
