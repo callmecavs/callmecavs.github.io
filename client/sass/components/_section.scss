@@ -2,9 +2,30 @@
 
 }
 
-.section-heading {
-  margin-bottom: 25px;
+.section-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 
+  margin-bottom: 25px;
+}
+
+.section-heading {
   font-size: 1.8rem;
   color: $copper;
+}
+
+.section-control {
+  display: flex;
+  align-items: center;
+}
+
+.section-eye {
+  margin-right: 15px;
+  margin-left: 15px;
+}
+
+.section-minus,
+.section-plus {
+  cursor: pointer;
 }
