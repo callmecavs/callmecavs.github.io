@@ -1,0 +1,32 @@
+.header {
+
+}
+
+.header-logo {
+  width: 76px;
+  height: 55px;
+
+  background-image: url("images/header/logo.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+
+  @include hide-text;
+}
+
+.header-heading,
+.header-subheading {
+  margin-bottom: 25px;
+
+  font-size: 2.1rem;
+}
+
+.header-cta {
+  display: flex;
+  align-items: center;
+
+  color: $copper;
+}
+
+.header-cta-icon {
+  margin-left: 10px;
+}
