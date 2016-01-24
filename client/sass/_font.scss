@@ -1,11 +1,13 @@
+@include font-face('Circle', 'circle');
+
 html {
   // 1rem = 10px
   font-size: 10px;
 }
 
 body {
-  // font-family: ;
-  // font-weight: ;
-  // font-size: ;
+  font-family: 'Circle', sans-serif;
+  font-weight: 400;
+  font-size: 1.4rem;
   line-height: 1.3;
 }
