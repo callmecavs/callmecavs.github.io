@@ -1,4 +1,8 @@
-.container {
+body {
+  background-color: $blue;
+}
+
+.wrapper {
   width: 100% - 2 * $site-gutter;
   max-width: $site-width;
   margin-right: auto;

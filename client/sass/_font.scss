@@ -6,8 +6,9 @@ html {
 }
 
 body {
-  font-family: 'Circle', sans-serif;
+  font-family: $sans;
   font-weight: 400;
   font-size: 1.4rem;
   line-height: 1.3;
+  color: $white;
 }
