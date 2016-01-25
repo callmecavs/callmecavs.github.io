@@ -8,11 +8,19 @@
   align-items: center;
 
   margin-bottom: 25px;
+
+  @include min($tablet) {
+    margin-bottom: 30px;
+  }
 }
 
 .section-heading {
   font-size: 2.1rem;
   color: $copper;
+
+  @include min($tablet) {
+    font-size: 2.4rem;
+  }
 }
 
 .section-control {
@@ -21,11 +29,25 @@
 }
 
 .section-eye {
-  margin-right: 15px;
-  margin-left: 15px;
+  margin-right: 10px;
+  margin-left: 10px;
 }
 
 .section-minus,
 .section-plus {
+  width: 25px;
+  height: 25px;
+
+  background-position: center;
+  background-repeat: no-repeat;
+
   cursor: pointer;
+}
+
+.section-minus {
+  background-image: url("images/section/minus.svg");
+}
+
+.section-plus {
+  background-image: url("images/section/plus.svg");
 }
