@@ -21,11 +21,13 @@ export default () => {
   const minus = document.querySelector('[data-about-minus]')
 
   plus.addEventListener('click', event => {
+    event.preventDefault()
     current < max && current++
     show(current)
   })
 
   minus.addEventListener('click', event => {
+    event.preventDefault()
     current > min && current--
     show(current)
   })
