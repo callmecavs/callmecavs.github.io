@@ -11,7 +11,7 @@ const children = info => `
 
 export default () => {
   // create repos markup
-  jax('http://localhost:8000/').then(response => {
+  jax('https://callmecavs.herokuapp.com/').then(response => {
     const repos = JSON.parse(response)
     const frag = document.createDocumentFragment()
 
