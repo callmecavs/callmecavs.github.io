@@ -1,4 +1,8 @@
 .badge {
   display: block;
   margin: 50px auto;
+
+  @include min($tablet) {
+    display: none;
+  }
 }

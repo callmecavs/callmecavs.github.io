@@ -1,5 +1,8 @@
 .contact {
-
+  @include min($tablet) {
+    display: flex;
+    align-items: center;
+  }
 }
 
 .contact-link {
@@ -7,6 +10,11 @@
   align-items: center;
 
   margin-bottom: 25px;
+
+  @include min($tablet) {
+    margin-right: 50px;
+    margin-bottom: 0;
+  }
 }
 
 .contact-link-icon {
