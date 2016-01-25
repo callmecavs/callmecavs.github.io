@@ -3,10 +3,15 @@ import device from './device'
 import about from './sections/about'
 import repos from './sections/repos'
 
-const main = () => {
-  device()
-  about()
-  repos()
-}
+document.addEventListener('readystatechange', event => {
+  switch(document.readyState) {
+    case 'interactive':
+      device()
+      repos()
+    break
 
-document.addEventListener('DOMContentLoaded', event => main())
+    case 'complete':
+      about()
+    break
+  }
+})
