@@ -6,14 +6,12 @@
   "license": "",
 
   "scripts": {
-    "push": "git subtree push --prefix dist origin master"
+    "client": "git subtree push --prefix dist origin master",
+    "server": "git subtree push --prefix server heroku master"
   },
 
   "dependencies": {
-    "express": "^4.13.3",
-    "jax.js": "^0.0.1",
-    "node-schedule": "^0.6.0",
-    "request": "^2.67.0"
+    "jax.js": "^0.0.1"
   },
 
   "devDependencies": {
