@@ -1,9 +1,19 @@
 .repos {
-
+  @include min($tablet) {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
 }
 
 .repo {
   margin-bottom: 30px;
+
+  @include min($tablet) {
+    flex-basis: 45%;
+
+    margin-bottom: 50px;
+  }
 }
 
 .repo-name {
