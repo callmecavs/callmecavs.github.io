@@ -6,14 +6,6 @@
   margin-bottom: 30px;
 }
 
-.repo-stars {
-  display: none;
-}
-
-.repo-forks {
-  display: none;
-}
-
 .repo-name {
   margin-bottom: 10px;
 
@@ -22,6 +14,30 @@
 
 .repo-desc {
   margin-bottom: 20px;
+}
+
+.repo-stats {
+  display: flex;
+  align-items: center;
+
+  margin-bottom: 15px;
+}
+
+.repo-stat {
+  display: flex;
+  align-items: center;
+
+  margin-right: 15px;
+}
+
+.repo-stat-icon {
+  margin-right: 5px;
+}
+
+.repo-stat-text {
+  font-size: 1.2rem;
+  line-height: 1;
+  text-align: center;
 }
 
 .repo-url {

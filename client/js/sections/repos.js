@@ -2,10 +2,21 @@ import jax from 'jax.js'
 
 // children template
 const children = info => `
-  <p class="repo-stars">${ info.stars }</p>
-  <p class="repo-forks">${ info.forks }</p>
   <p class="repo-name">${ info.name }</p>
   <p class="repo-desc">${ info.desc }</p>
+
+  <div class="repo-stats">
+    <p class="repo-stat">
+      <img class="repo-stat-icon" src="images/repos/star.svg">
+      <span class="repo-stat-text">${ info.stars }</span>
+    </p>
+
+    <p class="repo-stat">
+      <img class="repo-stat-icon" src="images/repos/fork.svg">
+      <span class="repo-stat-text">${ info.forks }</span>
+    </p>
+  </div>
+
   <a class="repo-url" href="${ info.url }" target="_blank">Launch<img class="repo-url-icon" src="images/repos/url.svg"></a>
 `
 
