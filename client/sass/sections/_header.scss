@@ -3,11 +3,25 @@
 
   height: calc(100vh - 85px);
   padding-top: 12.5vh;
+
+  @include min($tablet) {
+    height: auto;
+  }
 }
 
   .is-ios .header {
     height: calc(100vh - 155px);
   }
+
+.header-topbar {
+  @include min($tablet) {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 60px;
+  }
+}
 
 .header-logo {
   width: 76px;
@@ -20,16 +34,38 @@
   @include hide-text;
 }
 
+.header-nav {
+  display: none;
+
+  @include min($tablet) {
+    display: block;
+  }
+}
+
+.header-nav-link {
+  margin-left: 50px;
+
+  font-size: 1.8rem;
+}
+
 .header-content {
   position: absolute;
   bottom: 0;
   left: 0;
+
+  @include min($tablet) {
+    position: static;
+  }
 }
 
 .header-heading,
 .header-subheading {
-  font-size: 2.4rem;
+  font-size: 2.1rem;
   line-height: 1.35;
+
+  @include min($tablet) {
+    font-size: 2.4rem;
+  }
 }
 
 .header-heading {
@@ -45,6 +81,10 @@
   align-items: center;
 
   color: $copper;
+
+  @include min($tablet) {
+    display: none;
+  }
 }
 
 .header-cta-icon {

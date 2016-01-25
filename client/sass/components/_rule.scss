@@ -4,4 +4,9 @@
   margin-bottom: 40px;
 
   background-image: linear-gradient($gradient);
+
+  @include min($tablet) {
+    margin-top: 60px;
+    margin-bottom: 60px;
+  }
 }
