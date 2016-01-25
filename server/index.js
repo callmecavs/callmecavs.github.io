@@ -48,4 +48,4 @@ const cron = schedule.scheduleJob('*/5 * * * *', () => {
 app.get('/', (req, res) => res.json(repos))
 
 // start up server
-app.listen(8000)
+app.listen(process.env.PORT || 8000)
