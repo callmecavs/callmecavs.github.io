@@ -10,6 +10,10 @@
   align-items: center;
 
   margin-bottom: 20px;
+
+  @include min($tablet) {
+    margin-bottom: 30px;
+  }
 }
 
 .about-heading {
