@@ -33,6 +33,6 @@ export default () => {
       frag.appendChild(wrap)
     })
 
-    document.querySelector('.repos').appendChild(frag)
+    document.querySelector('.code-repos').appendChild(frag)
   })
 }

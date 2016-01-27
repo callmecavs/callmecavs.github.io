@@ -1,49 +1,25 @@
-.repos {
-  @include min($tablet) {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-  }
-}
-
 .repo {
-  margin-bottom: 30px;
 
-  @include min($tablet) {
-    flex-basis: 45%;
-
-    margin-bottom: 50px;
-  }
-
-  @include min($desktop) {
-    flex-basis: 27.5%;
-  }
+  @include min($tablet)  { flex-basis: 45%; }
+  @include min($desktop) { flex-basis: 27.5%; }
 }
 
 .repo-name {
   display: block;
-  margin-bottom: 15px;
 
   font-size: 2.1rem;
-
-  @include min($desktop) {
-    transition: color .5s ease;
-  }
 }
-
-  .repo-name:hover {
-    @include min($desktop) {
-      color: $copper;
-    }
-  }
 
   .repo-name::first-letter {
     text-transform: uppercase;
   }
 
-.repo-desc {
-  margin-bottom: 20px;
+  @include min($desktop) {
+    .repo-name       { transition: color .5s ease; }
+    .repo-name:hover { color: $copper; }
+  }
 
+.repo-desc {
   font-size: 1.3rem;
   line-height: 1.5;
 }
@@ -51,15 +27,11 @@
 .repo-stats {
   display: flex;
   align-items: center;
-
-  margin-bottom: 15px;
 }
 
 .repo-stat {
   display: flex;
   align-items: center;
-
-  margin-right: 15px;
 }
 
 .repo-stat-icon {

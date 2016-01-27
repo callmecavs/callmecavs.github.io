@@ -1,0 +1,19 @@
+.code {
+
+}
+
+.code-heading {
+  margin-bottom: 20px;
+}
+
+@include min($tablet) {
+  .code-heading {
+    margin-bottom: 30px;
+  }
+
+  .code-repos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+}
