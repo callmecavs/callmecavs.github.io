@@ -10,6 +10,20 @@
   margin-bottom: 40px;
 
   font-size: 1.6rem;
+  line-height: 1.35;
+}
+
+.code-quote-author {
+  display: block;
+  margin-top: 10px;
+
+  font-size: 1.4rem;
+  color: $copper;
+
+  @include min($tablet) {
+    display: inline;
+    margin-top: 0;
+  }
 }
 
 @include min($tablet) {
