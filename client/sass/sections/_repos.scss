@@ -46,10 +46,6 @@
 
   font-size: 1.3rem;
   line-height: 1.5;
-
-  @include min($desktop) {
-    margin-bottom: 15px;
-  }
 }
 
 .repo-stats {
