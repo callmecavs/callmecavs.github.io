@@ -4,9 +4,7 @@ export default () => {
   // cache selectors
   const wrap   = document.querySelector('[data-about]')
   const pieces = toArray('[data-about-piece]')
-
-  const plus  = document.querySelector('[data-about-plus]')
-  const minus = document.querySelector('[data-about-minus]')
+  const toggles = toArray('[data-about-toggle]')
 
   // cache index vars
   let current = 0
@@ -28,36 +26,28 @@ export default () => {
   })
 
   // bind events
+  toggles.forEach(toggle => {
+    toggle.addEventListener('click', event => {
+      event.preventDefault()
 
+      const prev = current
+
+      toggle.hasAttribute('data-about-plus')
+        ? current < max && current++
+        : current > min && current--
+
+      prev !== current && update(prev, current)
+    })
+  })
+
+  function update(prev, current) {
+    // remove active class
+    pieces[prev].classList.remove('is-active')
+
+    // adjust wrap height
+    setTimeout(() => wrap.style.height = `${ pieces[current].getAttribute('data-height') }px`, 500)
+
+    // add active class
+    setTimeout(() => pieces[current].classList.add('is-active'), 1000)
+  }
 }
-
-// export default () => {
-
-//   // show first content piece
-//   show(current)
-//
-//   // bind plus & minus handlers
-//   const plus  = document.querySelector('[data-about-plus]')
-//   const minus = document.querySelector('[data-about-minus]')
-//
-//   plus.addEventListener('click', event => {
-//     event.preventDefault()
-//     current < max && current++
-//     show(current)
-//   })
-//
-//   minus.addEventListener('click', event => {
-//     event.preventDefault()
-//     current > min && current--
-//     show(current)
-//   })
-//
-//   function show(index) {
-//     // adjust section height
-//     section.style.height = `${ content[current].getAttribute('data-height') }px`
-//
-//     // add active class
-//     content.forEach(piece => piece.classList.remove('is-active'))
-//     content[current].classList.add('is-active')
-//   }
-// }
