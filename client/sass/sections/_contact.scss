@@ -1,24 +1,42 @@
 .contact {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+
+  margin-bottom: 40px;
+
   @include min($tablet) {
-    display: flex;
-    align-items: center;
+    margin-bottom: 60px;
   }
 }
 
+.contact-heading {
+  margin-right: auto;
+}
+
 .contact-link {
-  display: flex;
+  display: inline-flex;
   align-items: center;
 
-  margin-bottom: 25px;
+  margin-left: 25px;
 
   @include min($tablet) {
-    margin-right: 50px;
-    margin-bottom: 0;
+    margin-left: 50px;
+  }
+}
+
+.contact-link-text {
+  display: none;
+
+  @include min($tablet) {
+    display: inline;
   }
 }
 
 .contact-link-icon {
-  margin-right: 15px;
-
   fill: $white;
+
+  @include min($tablet) {
+    margin-right: 15px;
+  }
 }
