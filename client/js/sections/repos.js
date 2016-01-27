@@ -2,7 +2,7 @@ import jax from 'jax.js'
 
 // children template
 const children = info => `
-  <p class="repo-name">${ info.name }</p>
+  <a class="repo-name" href="${ info.url }" target="_blank">${ info.name }</a>
   <p class="repo-desc">${ info.desc }</p>
 
   <div class="repo-stats">

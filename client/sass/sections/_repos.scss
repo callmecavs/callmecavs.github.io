@@ -21,10 +21,21 @@
 }
 
 .repo-name {
+  display: block;
   margin-bottom: 15px;
 
   font-size: 2.1rem;
+
+  @include min($desktop) {
+    transition: color .5s ease;
+  }
 }
+
+  .repo-name:hover {
+    @include min($desktop) {
+      color: $copper;
+    }
+  }
 
   .repo-name::first-letter {
     text-transform: uppercase;
@@ -66,6 +77,10 @@
   align-items: center;
 
   color: $copper;
+
+  @include min($desktop) {
+    display: none;
+  }
 }
 
   .repo-url-icon {
