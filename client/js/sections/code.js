@@ -6,9 +6,8 @@ const children = info => `
   <p class="repo-desc">${ info.desc }</p>
 
   <div class="repo-meta">
-    <p class="repo-info"><img class="repo-icon repo-icon-left" src="images/repos/star.svg">${ info.stars }</p>
-    <p class="repo-info"><img class="repo-icon repo-icon-left" src="images/repos/fork.svg">${ info.forks }</p>
-    <a class="repo-url" href="${ info.url }" target="_blank">Launch<img class="repo-icon repo-icon-right" src="images/repos/url.svg"></a>
+    <p class="repo-info"><img class="repo-icon" src="images/repos/star.svg">${ info.stars }</p>
+    <p class="repo-info"><img class="repo-icon" src="images/repos/fork.svg">${ info.forks }</p>
   </div>
 `
 

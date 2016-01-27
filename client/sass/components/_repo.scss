@@ -1,4 +1,6 @@
 .repo {
+  margin-bottom: 30px;
+  padding-bottom: 30px;
 
   @include min($tablet)  { flex-basis: 45%; }
   @include min($desktop) { flex-basis: 27.5%; }
@@ -6,8 +8,13 @@
 
 .repo-name {
   display: block;
+  margin-bottom: 10px;
 
-  font-size: 2.1rem;
+  font-size: 1.8rem;
+
+  @include min($tablet) {
+    font-size: 2.1rem;
+  }
 }
 
   .repo-name::first-letter {
@@ -20,6 +27,8 @@
   }
 
 .repo-desc {
+  margin-bottom: 10px;
+
   font-size: 1.3rem;
   line-height: 1.5;
 }
@@ -48,13 +57,5 @@
 }
 
 .repo-icon {
-
+  margin-right: 5px;
 }
-
-  .repo-icon-left {
-    margin-right: 5px;
-  }
-
-  .repo-icon-right {
-    margin-left: 5px;
-  }
