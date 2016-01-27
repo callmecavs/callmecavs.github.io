@@ -24,37 +24,37 @@
   line-height: 1.5;
 }
 
-.repo-stats {
+// meta
+
+.repo-meta {
   display: flex;
   align-items: center;
 }
 
-.repo-stat {
+.repo-info,
+.repo-url {
   display: flex;
   align-items: center;
 }
 
-.repo-stat-icon {
-  margin-right: 5px;
-}
-
-.repo-stat-text {
-  font-size: 1.2rem;
-  line-height: 1;
-  text-align: center;
+.repo-info {
+  margin-right: 15px;
 }
 
 .repo-url {
-  display: inline-flex;
-  align-items: center;
+  margin-left: auto;
 
   color: $copper;
-
-  @include min($desktop) {
-    display: none;
-  }
 }
 
-  .repo-url-icon {
-    margin-left: 10px;
+.repo-icon {
+
+}
+
+  .repo-icon-left {
+    margin-right: 5px;
+  }
+
+  .repo-icon-right {
+    margin-left: 5px;
   }

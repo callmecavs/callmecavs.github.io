@@ -6,9 +6,19 @@
   margin-bottom: 20px;
 }
 
+.code-quote {
+  margin-bottom: 40px;
+
+  font-size: 1.6rem;
+}
+
 @include min($tablet) {
   .code-heading {
     margin-bottom: 30px;
+  }
+
+  .code-quote {
+    margin-bottom: 60px;
   }
 
   .code-repos {
