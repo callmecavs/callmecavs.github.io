@@ -6,7 +6,7 @@ export default () => {
   const pieces  = toArray('[data-about-piece]')
   const buttons = toArray('[data-about-button]')
 
-  // cache index
+  // cache content index
   const min = 0
   const max = pieces.length - 1
 
@@ -26,30 +26,30 @@ export default () => {
   // set initial wrap height
   wrap.style.height = `${ heights[current] }px`
 
-  //
-  // // bind events
-  // toggles.forEach(toggle => {
-  //   toggle.addEventListener('click', event => {
-  //     event.preventDefault()
-  //
-  //     const prev = current
-  //
-  //     toggle.hasAttribute('data-about-plus')
-  //       ? current < max && current++
-  //       : current > min && current--
-  //
-  //     prev !== current && update(prev, current)
-  //   })
-  // })
-  //
-  // function update(prev, current) {
-  //   // remove active class
-  //   pieces[prev].classList.remove('is-active')
-  //
-  //   // adjust wrap height
-  //   setTimeout(() => wrap.style.height = `${ pieces[current].getAttribute('data-height') }px`, 500)
-  //
-  //   // add active class
-  //   setTimeout(() => pieces[current].classList.add('is-active'), 1000)
-  // }
+  // bind buttons handler
+  buttons.forEach(button => {
+    button.addEventListener('click', event => {
+      event.preventDefault()
+
+      // cache button action
+      const next = button.hasAttribute('data-about-next')
+
+      // cache old content index
+      const prev = current
+
+      // adjust content index
+      next
+        ? current < max && current++
+        : current > min && current--
+
+      requestAnimationFrame(() => {
+        // show or hide content
+        // absurd use of ternary operator incoming
+        pieces[next ? current : prev].classList[next ? 'add' : 'remove']('is-active')
+
+        // set new wrap height
+        wrap.style.height = `${ heights[current] }px`
+      })
+    })
+  })
 }
