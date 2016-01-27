@@ -1,5 +1,5 @@
 .repo {
-  @include min($tablet)  { flex-basis: 45%; }
+  @include min($tablet)  { flex-basis: 40%; }
   @include min($desktop) { flex-basis: 27.5%; }
 }
 
@@ -10,6 +10,11 @@
 
     margin-bottom: 30px;
     padding-bottom: 30px;
+
+    @include min($tablet) {
+      margin-bottom: 45px;
+      padding-bottom: 0;
+    }
   }
 
   // mobile bottom "border"
