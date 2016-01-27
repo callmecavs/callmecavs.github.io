@@ -9,4 +9,9 @@
     margin-top: 60px;
     margin-bottom: 60px;
   }
+
+  @include min($desktop) {
+    margin-top: 75px;
+    margin-bottom: 75px;
+  }
 }

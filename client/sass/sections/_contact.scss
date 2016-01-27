@@ -5,9 +5,8 @@
 
   margin-bottom: 40px;
 
-  @include min($tablet) {
-    margin-bottom: 60px;
-  }
+  @include min($tablet)  { margin-bottom: 60px; }
+  @include min($desktop) { margin-bottom: 75px; }
 }
 
 .contact-heading {
