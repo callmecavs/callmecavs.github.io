@@ -2,13 +2,31 @@
 
 }
 
+.code-topbar {
+  margin-bottom: 40px;
+
+  @include min($tablet) {
+    margin-bottom: 60px;
+  }
+
+  @include min($desktop) {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 75px;
+  }
+}
+
 .code-heading {
   margin-bottom: 20px;
+
+  @include min($desktop) {
+    margin-bottom: 0;
+  }
 }
 
 .code-quote {
-  margin-bottom: 40px;
-
   font-size: 1.6rem;
   line-height: 1.35;
 }
@@ -26,12 +44,8 @@
   }
 }
 
-@include min($tablet) {
-  .code-quote {
-    margin-bottom: 60px;
-  }
-
-  .code-repos {
+.code-repos {
+  @include min($tablet) {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
