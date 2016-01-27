@@ -27,10 +27,6 @@
 }
 
 @include min($tablet) {
-  .code-heading {
-    margin-bottom: 30px;
-  }
-
   .code-quote {
     margin-bottom: 60px;
   }
