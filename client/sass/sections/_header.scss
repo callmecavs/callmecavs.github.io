@@ -45,8 +45,18 @@
 .header-nav-link {
   margin-left: 50px;
 
-  font-size: 1.8rem;
+  font-size: 1.6rem;
 }
+
+  @include min($desktop) {
+    .header-nav-link {
+      transition: color .5s ease;
+    }
+
+    .header-nav-link:hover {
+      color: $copper;
+    }
+  }
 
 .header-content {
   position: absolute;
