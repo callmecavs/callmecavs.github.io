@@ -40,13 +40,13 @@
 
 .about-content {
   transition: height .5s ease;
-
-  position: relative;
 }
 
 .about-piece {
   opacity: 0;
   visibility: hidden;
+
+  display: none;
 
   transition: opacity .5s ease, visibility 0s ease .5s;
 }

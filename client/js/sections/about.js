@@ -2,52 +2,54 @@ import { toArray } from '../util'
 
 export default () => {
   // cache selectors
-  const wrap   = document.querySelector('[data-about]')
-  const pieces = toArray('[data-about-piece]')
-  const toggles = toArray('[data-about-toggle]')
+  const wrap    = document.querySelector('[data-about-content]')
+  const pieces  = toArray('[data-about-piece]')
+  const buttons = toArray('[data-about-button]')
 
-  // cache index vars
-  let current = 0
-
+  // cache index
   const min = 0
   const max = pieces.length - 1
 
-  // cache height of pieces
-  const heights = pieces.map(piece => piece.clientHeight)
+  let current = 0
 
-  // cache height of pieces
-  pieces.forEach(piece => {
-    piece.setAttribute('data-height', piece.clientHeight)
+  // run through pieces
+  const heights = pieces.map(piece => {
+    // add display to them one at a time
+    piece.hasAttribute('data-block')
+      ? piece.style.display = 'block'
+      : piece.style.display = 'inline'
 
-    // set initial wrap height
-    if(piece.classList.contains('is-active')) {
-      wrap.style.height = `${ piece.getAttribute('data-height') }px`
-    }
+    // cache wrap height each time
+    return wrap.clientHeight
   })
 
-  // bind events
-  toggles.forEach(toggle => {
-    toggle.addEventListener('click', event => {
-      event.preventDefault()
+  // set initial wrap height
+  wrap.style.height = `${ heights[current] }px`
 
-      const prev = current
-
-      toggle.hasAttribute('data-about-plus')
-        ? current < max && current++
-        : current > min && current--
-
-      prev !== current && update(prev, current)
-    })
-  })
-
-  function update(prev, current) {
-    // remove active class
-    pieces[prev].classList.remove('is-active')
-
-    // adjust wrap height
-    setTimeout(() => wrap.style.height = `${ pieces[current].getAttribute('data-height') }px`, 500)
-
-    // add active class
-    setTimeout(() => pieces[current].classList.add('is-active'), 1000)
-  }
+  //
+  // // bind events
+  // toggles.forEach(toggle => {
+  //   toggle.addEventListener('click', event => {
+  //     event.preventDefault()
+  //
+  //     const prev = current
+  //
+  //     toggle.hasAttribute('data-about-plus')
+  //       ? current < max && current++
+  //       : current > min && current--
+  //
+  //     prev !== current && update(prev, current)
+  //   })
+  // })
+  //
+  // function update(prev, current) {
+  //   // remove active class
+  //   pieces[prev].classList.remove('is-active')
+  //
+  //   // adjust wrap height
+  //   setTimeout(() => wrap.style.height = `${ pieces[current].getAttribute('data-height') }px`, 500)
+  //
+  //   // add active class
+  //   setTimeout(() => pieces[current].classList.add('is-active'), 1000)
+  // }
 }
