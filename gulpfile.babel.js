@@ -96,21 +96,23 @@ gulp.task('images', () => {
     .pipe(gulp.dest('dist/images'))
 })
 
-// VIDEOS, FONTS, FAVICON
+// VIDEOS, FONTS, FAVICON, CNAME
 
 const inputs = [
   '/videos/**/*',
   '/fonts/**/*.{eot,svg,ttf,woff,woff2}',
-  '/favicon.ico'
+  '/favicon.ico',
+  '/CNAME'
 ]
 
 const outputs = [
   '/videos',
   '/fonts',
+  '',
   ''
 ]
 
-;['videos', 'fonts', 'favicon'].forEach((name, index) => {
+;['videos', 'fonts', 'favicon', 'cname'].forEach((name, index) => {
   gulp.task(name, () => {
     return gulp.src('client' + inputs[index])
       .pipe(plumber({ errorHandler: onError }))
@@ -159,5 +161,5 @@ gulp.task('watch', () => {
 
 // BUILD & DEFAULT TASK
 
-gulp.task('build', ['html', 'sass', 'js', 'images', 'videos', 'fonts', 'favicon'])
+gulp.task('build', ['html', 'sass', 'js', 'images', 'videos', 'fonts', 'favicon', 'cname'])
 gulp.task('default', ['server', 'build', 'watch'])
