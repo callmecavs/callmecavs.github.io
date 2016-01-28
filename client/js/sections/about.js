@@ -15,8 +15,8 @@ export default () => {
   // run through pieces
   const heights = pieces.map(piece => {
     // add display to them one at a time
-    piece.hasAttribute('data-block')
-      ? piece.style.display = 'block'
+    piece.hasAttribute('data-flex')
+      ? piece.style.display = 'flex'
       : piece.style.display = 'inline'
 
     // cache wrap height each time

@@ -63,25 +63,45 @@
 }
 
 .about-wrap {
+  justify-content: flex-end;
+  align-items: center;
 
+  padding-top: 15px;
 }
 
 .about-age {
+  display: flex;
+  align-items: center;
 
+  margin-left: 25px;
 }
 
 .about-age-meta {
-
+  margin-right: 15px;
 }
 
 .about-age-meta-heading {
+  margin-bottom: 5px;
 
+  font-size: 1.2rem;
 }
 
 .about-age-meta-text {
-
+  font-size: 1rem;
+  color: $copper;
 }
 
 .about-age-image {
 
+}
+
+// content tablet
+
+@include min($tablet) {
+  .about-text             { font-size: 1.6rem; }
+  .about-wrap             { padding-top: 30px; }
+  .about-age              { margin-left: 50px; }
+  .about-age-meta         { margin-right: 30px; }
+  .about-age-meta-heading { font-size: 1.4rem; }
+  .about-age-meta-text    { font-size: 1.2rem; }
 }
