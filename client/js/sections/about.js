@@ -44,8 +44,9 @@ export default () => {
 
       requestAnimationFrame(() => {
         // show or hide content
-        // absurd use of ternary operator incoming
-        pieces[next ? current : prev].classList[next ? 'add' : 'remove']('is-active')
+        next
+          ? pieces[current].classList.add('is-active')
+          : prev !== 0 && pieces[prev].classList.remove('is-active')
 
         // set new wrap height
         wrap.style.height = `${ heights[current] }px`
