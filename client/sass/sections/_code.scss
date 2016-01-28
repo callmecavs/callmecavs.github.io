@@ -2,46 +2,11 @@
 
 }
 
-.code-topbar {
-  margin-bottom: 40px;
-
-  @include min($tablet) {
-    margin-bottom: 60px;
-  }
-
-  @include min($desktop) {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    margin-bottom: 75px;
-  }
-}
-
 .code-heading {
   margin-bottom: 20px;
 
-  @include min($desktop) {
-    margin-bottom: 0;
-  }
-}
-
-.code-quote {
-  font-size: 1.6rem;
-  line-height: 1.35;
-}
-
-.code-quote-author {
-  display: block;
-  margin-top: 10px;
-
-  font-size: 1.4rem;
-  color: $copper;
-
-  @include min($tablet) {
-    display: inline;
-    margin-top: 0;
-  }
+  @include min($tablet)  { margin-bottom: 30px; }
+  @include min($desktop) { margin-bottom: 40px; }
 }
 
 .code-repos {
