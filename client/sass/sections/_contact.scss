@@ -32,6 +32,11 @@
   }
 }
 
+  @include min($desktop) {
+    .contact-link-text                     { transition: color .5s ease; }
+    .contact-link:hover .contact-link-text { color: $copper; }
+  }
+
 .contact-link-icon {
   fill: $white;
 
