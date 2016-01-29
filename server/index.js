@@ -9,7 +9,8 @@ const app = express()
 
 // middleware for CORS
 app.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000')
+  res.setHeader('Access-Control-Allow-Origin', 'http://www.callmecavs.com')
+  res.setHeader('Access-Control-Allow-Origin', 'http://callmecavs.com')
   res.setHeader('Access-Control-Allow-Methods', 'GET')
   next()
 })
