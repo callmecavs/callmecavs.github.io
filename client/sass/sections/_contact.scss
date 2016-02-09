@@ -7,12 +7,22 @@
 
 .contact-heading {
   margin-bottom: 20px;
+
+  @include min($tablet) {
+    margin-bottom: 30px;
+  }
 }
 
 .contact-subheading {
   margin-bottom: 25px;
 
   line-height: 1.5;
+
+  @include min($tablet) {
+    margin-bottom: 35px;
+
+    font-size: 1.6rem;
+  }
 }
 
 .contact-link {
