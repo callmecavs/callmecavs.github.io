@@ -92,8 +92,18 @@
 }
 
 .about-age-image {
+  width: 64px;
+  height: 64px;
 
+  border-radius: 50%;
+
+  background-position: center;
+  background-size: 100%;
+  background-repeat: no-repeat;
 }
+
+  .about-age-image-modern    { background-image: url("images/about/modern.jpg"); }
+  .about-age-image-throwback { background-image: url("images/about/throwback.jpg"); }
 
 // content tablet
 
