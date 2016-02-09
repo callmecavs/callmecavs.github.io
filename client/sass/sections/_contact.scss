@@ -1,8 +1,4 @@
 .contact {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-
   margin-bottom: 40px;
 
   @include min($tablet)  { margin-bottom: 60px; }
@@ -10,17 +6,23 @@
 }
 
 .contact-heading {
-  margin-right: auto;
+  margin-bottom: 20px;
+}
+
+.contact-subheading {
+  margin-bottom: 25px;
+
+  line-height: 1.5;
 }
 
 .contact-link {
   display: inline-flex;
   align-items: center;
 
-  margin-left: 25px;
+  margin-right: 25px;
 
   @include min($tablet) {
-    margin-left: 50px;
+    margin-right: 50px;
   }
 }
 
