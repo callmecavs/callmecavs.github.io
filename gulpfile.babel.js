@@ -38,7 +38,7 @@ gulp.task('html', () => {
   return gulp.src('client/html/**/*.html')
     .pipe(plumber({ errorHandler: onError }))
     .pipe(fileinclude({ prefix: '@', basepath: 'dist/' }))
-    .pipe(htmlmin({ collapseWhitespace: true, removeComments: true, minifyJS: true }))
+    .pipe(htmlmin({ collapseWhitespace: true, removeComments: true }))
     .pipe(gulp.dest('dist'))
 })
 
