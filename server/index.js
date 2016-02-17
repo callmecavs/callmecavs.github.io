@@ -36,7 +36,7 @@ const cron = schedule.scheduleJob('*/5 * * * *', () => {
         .map(x => ({
           name: x.name,
           desc: x.description,
-          url: x.html_url,
+          url: x.homepage || x.html_url,
           stars: x.stargazers_count,
           forks: x.forks_count
         }))
