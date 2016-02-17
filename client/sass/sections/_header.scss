@@ -7,10 +7,18 @@
   @include min($tablet) {
     height: auto;
   }
+
+  @media screen and (max-height: 500px) {
+    height: auto;
+  }
 }
 
   .is-ios .header {
     height: calc(100vh - 155px);
+
+    @media screen and (max-height: 500px) {
+      height: auto;
+    }
   }
 
 .header-topbar {
@@ -20,6 +28,10 @@
     align-items: center;
 
     margin-bottom: 60px;
+  }
+
+  @media screen and (max-height: 500px) {
+    margin-bottom: 35px;
   }
 }
 
@@ -64,6 +76,10 @@
   left: 0;
 
   @include min($tablet) {
+    position: static;
+  }
+
+  @media screen and (max-height: 500px) {
     position: static;
   }
 }
