@@ -1,23 +1,17 @@
-import Jump from 'jump.js'
+import jump from 'jump.js'
 
-import { toArray } from '../util'
+import toArray from '../utils/toArray.js'
 
 export default () => {
-  // cache selectors, instance, and options
-  const instance = new Jump()
-  const jumpers  = toArray('[data-jump]')
-  const rules    = toArray('[data-rule]')
-
-  const options = {
-    duration: 1000
-  }
+  // cache elements
+  const jumpers = toArray('[data-jump]')
 
   // bind click handlers
   jumpers.forEach(jumper => {
     jumper.addEventListener('click', event => {
       event.preventDefault()
 
-      // determine target hr
+      // determine target
       const attr = jumper.getAttribute('data-jump')
 
       const target = attr === '.header'
@@ -25,7 +19,7 @@ export default () => {
         : `[data-rule]:nth-of-type(${ parseInt(attr, 10) })`
 
       // make the jump
-      instance.jump(target, options)
+      jump(target)
     })
   })
 }
