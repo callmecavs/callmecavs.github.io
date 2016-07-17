@@ -13,17 +13,19 @@ const children = info => `
 
 export default () => {
   // create repos markup
-  jax('https://callmecavs.herokuapp.com/').then(response => {
-    const repos = JSON.parse(response)
-    const frag = document.createDocumentFragment()
+  jax('https://callmecavs.herokuapp.com/')
+    .then(res => {
+      const repos = JSON.parse(res)
+      const frag = document.createDocumentFragment()
 
-    repos.forEach(repo => {
-      const wrap = document.createElement('div')
-      wrap.classList.add('repo')
-      wrap.innerHTML = children(repo)
-      frag.appendChild(wrap)
+      repos.forEach(repo => {
+        const wrap = document.createElement('div')
+        wrap.classList.add('repo')
+        wrap.innerHTML = children(repo)
+        frag.appendChild(wrap)
+      })
+
+      document.querySelector('.code-repos').appendChild(frag)
     })
-
-    document.querySelector('.code-repos').appendChild(frag)
-  })
+    .catch(error => console.log(error))
 }
