@@ -1,20 +1,11 @@
 import device from './device'
-
 import jump from './components/jump'
-
-import about from './sections/about'
 import code from './sections/code'
 
-document.addEventListener('readystatechange', event => {
-  switch(document.readyState) {
-    case 'interactive':
-      device()
-      code()
-      jump()
-    break
+const main = () => {
+  device()
+  code()
+  jump()
+}
 
-    case 'complete':
-      about()
-    break
-  }
-})
+document.addEventListener('DOMContentLoaded', main)
