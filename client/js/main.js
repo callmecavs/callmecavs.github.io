@@ -1,4 +1,4 @@
-import device from './device'
+import device from './utils/device'
 import jump from './components/jump'
 import code from './sections/code'
 
