@@ -1,13 +1,9 @@
 .about {
-
+  @include clearfix;
 }
 
-// topbar
-
-.about-topbar {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
+.about-heading {
+  margin-right: auto;
 
   margin-bottom: 20px;
 
@@ -16,60 +12,15 @@
   }
 }
 
-.about-heading {
-  margin-right: auto;
-}
-
-.about-button {
-  width: 25px;
-  height: 25px;
-
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
-.about-button-next { background-image: url("images/about/next.svg"); }
-.about-button-prev { background-image: url("images/about/prev.svg"); }
-
-.about-icon {
-  margin-right: 10px;
-  margin-left: 10px;
-}
-
-// content
-
-.about-content {
-  transition: height .5s ease;
-}
-
-.about-piece {
-  opacity: 0;
-  visibility: hidden;
-
-  display: none;
-
-  transition: opacity .5s ease, visibility 0s ease .5s;
-}
-
-  .about-piece.is-active {
-    opacity: 1;
-    visibility: visible;
-
-    transition-delay: 0s;
-  }
-
 .about-text {
+  margin-bottom: 20px;
+
   line-height: 1.5;
 }
 
-.about-wrap {
-  justify-content: flex-end;
-  align-items: center;
-
-  padding-top: 20px;
-}
-
 .about-age {
+  float: right;
+
   display: flex;
   align-items: center;
 
@@ -109,7 +60,6 @@
 
 @include min($tablet) {
   .about-text             { font-size: 1.6rem; }
-  .about-wrap             { padding-top: 30px; }
   .about-age              { margin-left: 50px; }
   .about-age-meta         { margin-right: 30px; }
   .about-age-meta-heading { font-size: 1.4rem; }
