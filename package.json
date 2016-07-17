@@ -11,8 +11,8 @@
   },
 
   "dependencies": {
-    "jax.js": "^0.0.1",
-    "jump.js": "^0.3.1"
+    "jax.js": "^1.0.1",
+    "jump.js": "^1.0.1"
   },
 
   "devDependencies": {
