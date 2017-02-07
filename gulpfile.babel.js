@@ -1,26 +1,26 @@
-// IMPORTS
+const prefixer = require('autoprefixer')
+const sync     = require('browser-sync')
+const cssnano  = require('cssnano')
+const del      = require('del')
+const fs       = require('fs')
+const gulp     = require('gulp')
+const changed  = require('gulp-changed')
+const include  = require('gulp-file-include')
+const htmlmin  = require('gulp-htmlmin')
+const imagemin = require('gulp-imagemin')
+const plumber  = require('gulp-plumber')
+const postcss  = require('gulp-postcss')
+const sass     = require('gulp-sass')
+const maps     = require('gulp-sourcemaps')
+const notifier = require('node-notifier')
+const rollup   = require('rollup')
+const babel    = require('rollup-plugin-babel')
+const commonjs = require('rollup-plugin-commonjs')
+const resolve  = require('rollup-plugin-node-resolve')
+const uglify   = require('rollup-plugin-uglify')
+const rucksack = require('rucksack-css')
 
-import babelify from 'babelify'
-import sync from 'browser-sync'
-import browserify from 'browserify'
-import gulp from 'gulp'
-import autoprefixer from 'gulp-autoprefixer'
-import changed from 'gulp-changed'
-import nano from 'gulp-cssnano'
-import fileinclude from 'gulp-file-include'
-import htmlmin from 'gulp-htmlmin'
-import imagemin from 'gulp-imagemin'
-import plumber from 'gulp-plumber'
-import sass from 'gulp-sass'
-import sourcemaps from 'gulp-sourcemaps'
-import uglify from 'gulp-uglify'
-import assign from 'lodash.assign'
-import notifier from 'node-notifier'
-import buffer from 'vinyl-buffer'
-import source from 'vinyl-source-stream'
-import watchify from 'watchify'
-
-// ERROR HANDLER
+// error handler
 
 const onError = function(error) {
   notifier.notify({
@@ -32,95 +32,110 @@ const onError = function(error) {
   this.emit('end')
 }
 
-// HTML
+// clean
 
-gulp.task('html', () => {
+gulp.task('clean', () => del('dist'))
+
+// html
+
+gulp.task('html', ['images'], () => {
   return gulp.src('client/html/**/*.html')
     .pipe(plumber({ errorHandler: onError }))
-    .pipe(fileinclude({ prefix: '@', basepath: 'dist/' }))
+    .pipe(include({ prefix: '@', basepath: 'dist/' }))
     .pipe(htmlmin({ collapseWhitespace: true, removeComments: true }))
     .pipe(gulp.dest('dist'))
 })
 
-// SASS
+// sass
+
+const processors = [
+  rucksack({ inputPseudo: false, quantityQueries: false }),
+  prefixer({ browsers: 'last 2 versions' }),
+  cssnano({ safe: true })
+]
 
 gulp.task('sass', () => {
   return gulp.src('client/sass/style.scss')
     .pipe(plumber({ errorHandler: onError }))
-    .pipe(sourcemaps.init())
+    .pipe(maps.init())
     .pipe(sass())
-    .pipe(autoprefixer({ browsers: [ 'last 2 versions', 'ie >= 9', 'Android >= 4.1' ] }))
-    .pipe(nano({ safe: true }))
-    .pipe(sourcemaps.write('./maps', { addComment: false }))
+    .pipe(postcss(processors))
+    .pipe(maps.write('./maps', { addComment: false }))
     .pipe(gulp.dest('dist'))
 })
 
-// JS
+// js
 
-const browserifyArgs = {
-  entries: 'client/js/main.js',
-  debug: true,
-  transform: [ 'babelify' ]
+const read = {
+  entry: 'client/js/main.js',
+  sourceMap: true,
+  plugins: [
+    resolve({ jsnext: true, main: true }),
+    commonjs(),
+    babel({ exclude: 'node_modules/**' }),
+    uglify()
+  ]
 }
 
-const watchifyArgs = assign(watchify.args, browserifyArgs)
-const bundler = watchify(browserify(watchifyArgs))
-
-const build = () => {
-  console.log('Bundling started...')
-  console.time('Bundling finished')
-
-  return bundler
-    .bundle()
-    .on('error', onError)
-    .on('end', () => console.timeEnd('Bundling finished'))
-    .pipe(source('bundle.js'))
-    .pipe(buffer())
-    .pipe(sourcemaps.init({ loadMaps: true }))
-    .pipe(uglify())
-    .pipe(sourcemaps.write('./maps', { addComment: false }))
-    .pipe(gulp.dest('dist'))
-    .pipe(sync.stream())
+const write = {
+  format: 'iife',
+  sourceMap: true
 }
 
-bundler.on('update', build)
-gulp.task('js', build)
+gulp.task('js', () => {
+  return rollup
+    .rollup(read)
+    .then(bundle => {
+      // generate the bundle
+      const files = bundle.generate(write)
 
-// IMAGES
+      // write the files to dist
+      fs.writeFileSync('dist/bundle.js', files.code)
+      fs.writeFileSync('dist/maps/bundle.js.map', files.map.toString())
+    })
+})
+
+// images
 
 gulp.task('images', () => {
   return gulp.src('client/images/**/*.{gif,jpg,png,svg}')
     .pipe(plumber({ errorHandler: onError }))
-    .pipe(changed('dist'))
+    .pipe(changed('dist/images'))
     .pipe(imagemin({ progressive: true, interlaced: true }))
     .pipe(gulp.dest('dist/images'))
 })
 
-// VIDEOS, FONTS, FAVICON, CNAME
+// fonts, videos, favicon, cname
 
-const inputs = [
-  '/videos/**/*',
-  '/fonts/**/*.{eot,svg,ttf,woff,woff2}',
-  '/favicon.ico',
-  '/CNAME'
+const others = [
+  {
+    name: 'fonts',
+    src:  '/fonts/**/*.{woff,woff2}',
+    dest: '/fonts'
+  }, {
+    name: 'videos',
+    src:  '/videos/**/*',
+    dest: '/videos'
+  }, {
+    name: 'favicon',
+    src:  '/favicon.ico',
+    dest: ''
+  }, {
+    name: 'cname',
+    src:  '/CNAME',
+    dest: ''
+  }
 ]
 
-const outputs = [
-  '/videos',
-  '/fonts',
-  '',
-  ''
-]
-
-;['videos', 'fonts', 'favicon', 'cname'].forEach((name, index) => {
-  gulp.task(name, () => {
-    return gulp.src('client' + inputs[index])
+others.forEach(object => {
+  gulp.task(object.name, () => {
+    return gulp.src('client' + object.src)
       .pipe(plumber({ errorHandler: onError }))
-      .pipe(gulp.dest('dist' + outputs[index]))
+      .pipe(gulp.dest('dist' + object.dest))
   })
 })
 
-// SERVER
+// server
 
 const server = sync.create()
 const reload = sync.reload
@@ -151,15 +166,24 @@ const options = {
 
 gulp.task('server', () => sync(options))
 
-// WATCH
+// watch
 
 gulp.task('watch', () => {
   gulp.watch('client/html/**/*.html', ['html', reload])
   gulp.watch('client/sass/**/*.scss', ['sass', reload])
+  gulp.watch('client/js/**/*.js', ['js', reload])
   gulp.watch('client/images/**/*.{gif,jpg,png,svg}', ['images', reload])
 })
 
-// BUILD & DEFAULT TASK
+// build and default tasks
 
-gulp.task('build', ['html', 'sass', 'js', 'images', 'videos', 'fonts', 'favicon', 'cname'])
-gulp.task('default', ['server', 'build', 'watch'])
+gulp.task('build', ['clean'], () => {
+  // create dist directories
+  fs.mkdirSync('dist')
+  fs.mkdirSync('dist/maps')
+
+  // run the tasks
+  gulp.start('html', 'sass', 'js', 'images', 'fonts', 'videos', 'favicon', 'cname')
+})
+
+gulp.task('default', ['build', 'server', 'watch'])
