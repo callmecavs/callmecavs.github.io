@@ -33,6 +33,7 @@
     "gulp-postcss": "^6.2.0",
     "gulp-sass": "^2.3.2",
     "gulp-sourcemaps": "^1.9.1",
+    "handmade": "0.0.3",
     "node-notifier": "^4.6.1",
     "rollup": "^0.36.4",
     "rollup-plugin-babel": "^2.6.1",
